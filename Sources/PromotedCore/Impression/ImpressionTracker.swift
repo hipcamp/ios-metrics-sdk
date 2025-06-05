@@ -366,7 +366,7 @@ public class ImpressionTrackerDebugLogger: ImpressionTrackerDelegate {
   ) {
     for impression in impressions {
       osLog.debug(
-        "Impression: %{private}@ autoViewState: %{private}@",
+        "Impression TEST: %{private}@ autoViewState: %{private}@",
         impression.debugDescription,
         autoViewState.debugDescription
       )

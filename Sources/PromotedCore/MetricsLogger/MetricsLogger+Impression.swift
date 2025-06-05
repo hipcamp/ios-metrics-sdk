@@ -46,7 +46,8 @@ public extension MetricsLogger {
       collectionInteraction: collectionInteraction,
       contentID: content.contentID,
       insertionID: content.insertionID,
-      viewID: viewID
+      viewID: viewID,
+      properties: content.properties
     )
   }
 

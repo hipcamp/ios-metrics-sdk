@@ -8,11 +8,11 @@ Pod::Spec.new do |s|
   Provided as both a Cocoapod and Swift Package.
   DESC
 
-  s.homepage         = 'https://github.com/promotedai/ios-metrics-sdk'
+  s.homepage         = 'https://github.com/hipcamp/ios-metrics-sdk'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Yuna Wang' => 'yuna@promoted.ai' }
   s.source           = {
-    :git => 'https://github.com/promotedai/ios-metrics-sdk.git',
+    :git => 'https://github.com/hipcamp/ios-metrics-sdk.git',
     :tag => s.version.to_s
   }
 

@@ -113,7 +113,12 @@ public extension MetricsLogger {
       ) {
         impression.idProvenances = i
       }
-      if let p = propertiesMessage(properties) { impression.properties = p }
+      if let json = try? String(data: JSONSerialization.data(withJSONObject: properties), encoding: .utf8) {
+        let message = try? Common_Properties(jsonString: json)
+        if let p = propertiesMessage(message) {
+          impression.properties = p
+        }
+      }
       log(message: impression)
     }
     return impression

@@ -82,7 +82,7 @@ public extension MetricsLogger {
     insertionID: String? = nil,
     requestID: String? = nil,
     viewID: String? = nil,
-    properties: Message? = nil
+    properties: [String: Any]? = nil
   ) -> Event_Impression {
     var impression = Event_Impression()
     withMonitoredExecution {

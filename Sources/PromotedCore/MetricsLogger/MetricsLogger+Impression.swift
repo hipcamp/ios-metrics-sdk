@@ -46,7 +46,8 @@ public extension MetricsLogger {
       collectionInteraction: collectionInteraction,
       contentID: content.contentID,
       insertionID: content.insertionID,
-      viewID: viewID
+      viewID: viewID,
+      properties: content.properties
     )
   }
 
@@ -81,7 +82,7 @@ public extension MetricsLogger {
     insertionID: String? = nil,
     requestID: String? = nil,
     viewID: String? = nil,
-    properties: Message? = nil
+    properties: [String: Any]? = nil
   ) -> Event_Impression {
     var impression = Event_Impression()
     withMonitoredExecution {
@@ -112,7 +113,12 @@ public extension MetricsLogger {
       ) {
         impression.idProvenances = i
       }
-      if let p = propertiesMessage(properties) { impression.properties = p }
+      if let json = try? String(data: JSONSerialization.data(withJSONObject: properties), encoding: .utf8) {
+        let message = try? Common_Properties(jsonString: json)
+        if let p = propertiesMessage(message) {
+          impression.properties = p
+        }
+      }
       log(message: impression)
     }
     return impression
